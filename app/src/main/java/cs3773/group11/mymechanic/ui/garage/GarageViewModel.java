@@ -1,16 +1,16 @@
-package cs3773.group11.mymechanic.ui.home;
+package cs3773.group11.mymechanic.ui.garage;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class HomeViewModel extends ViewModel {
+public class GarageViewModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
 
-    public HomeViewModel() {
+    public GarageViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is home fragment");
+        mText.setValue("This is garage fragment");
     }
 
     public LiveData<String> getText() {
