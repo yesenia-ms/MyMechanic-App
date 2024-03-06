@@ -13,7 +13,7 @@
         android:paddingLeft="50dp"
         android:paddingTop="60dp"
         android:paddingRight="50dp"
-        app:srcCompat="@drawable/blue_car" />
+        app:srcCompat="@drawable/blue_car_2" />
 
     <TextView
         android:id="@+id/myMechanicText"
