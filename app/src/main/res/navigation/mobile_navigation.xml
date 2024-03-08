@@ -5,11 +5,11 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/navigation_home">
 
-    <fragment
+    <activity
         android:id="@+id/navigation_home"
-        android:name="cs3773.group11.mymechanic.ui.garage.GarageFragment"
+        android:name="cs3773.group11.mymechanic.GarageActivity"
         android:label="@string/title_garage"
-        tools:layout="@layout/fragment_garage" />
+        tools:layout="@layout/activity_garage" />
 
     <fragment
         android:id="@+id/navigation_dashboard"

@@ -13,6 +13,12 @@
         android:theme="@style/Theme.MyMechanic"
         tools:targetApi="31">
         <activity
+            android:name=".AddCarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GarageActivity"
+            android:exported="false" />
+        <activity
             android:name=".LoginActivity"
             android:exported="true"
             android:label="@string/app_name">
@@ -24,8 +30,11 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
