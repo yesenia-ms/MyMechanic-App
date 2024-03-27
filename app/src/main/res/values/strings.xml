@@ -3,4 +3,5 @@
     <string name="title_garage">Garage</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="OBDIICode"><i>Enter OBD-II Code</i></string>
 </resources>

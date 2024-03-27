@@ -15,26 +15,14 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.Objects;
 
-public class GarageActivity extends AppCompatActivity {
+public class ProblemsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_garage);
-
-        ImageButton imageButton = findViewById(R.id.addButton);
-
-        // Set an OnClickListener to the ImageButton
-        imageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Define the intent to start the new activity
-                Intent intent = new Intent(GarageActivity.this, AddCarActivity.class);
-                startActivity(intent);
-            }
-        });
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.garageScreen), (v, insets) -> {
+        setContentView(R.layout.activity_problems);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
@@ -48,10 +36,10 @@ public class GarageActivity extends AppCompatActivity {
         navView.setOnItemSelectedListener(item ->  {
             int itemId = item.getItemId();
             if (itemId == R.id.navigation_home) {
+                startActivity(new Intent(getApplicationContext(), GarageActivity.class));
+                finish();
                 return true;
             } else if (itemId == R.id.navigation_dashboard) {
-                startActivity(new Intent(getApplicationContext(), ProblemsActivity.class));
-                finish();
                 return true;
             }
             return false;

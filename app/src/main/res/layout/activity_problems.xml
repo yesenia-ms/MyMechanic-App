@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTintMode="add"
+    tools:context=".ProblemsActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar3"
+            android:layout_width="match_parent"
+            android:layout_height="76dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:background="#237FEE"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="-24dp"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="@font/racing_sans_one"
+                    android:text="MyMechanic"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="34sp"
+                    android:textStyle="bold"
+                    android:typeface="serif" />
+
+                <ImageButton
+                    android:id="@+id/imageButton3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="false"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginEnd="11dp"
+                    android:adjustViewBounds="true"
+                    android:background="#237FEE"
+                    android:clickable="true"
+                    android:maxWidth="50dp"
+                    android:maxHeight="50dp"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/default_pic" />
+
+            </RelativeLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+        <TextView
+            android:id="@+id/problemText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="25dp"
+            android:fontFamily="@font/racing_sans_one"
+            android:gravity="center"
+            android:text="Experiencing Issues?"
+            android:textColor="#000000"
+            android:textSize="34sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/problemVehicleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:fontFamily="@font/racing_sans_one"
+            android:gravity="center"
+            android:text="Which Vehicle?"
+            android:textColor="#000000"
+            android:textSize="24sp" />
+
+        <RelativeLayout
+            android:layout_width="349dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="30dp"
+            android:background="#CDC5C5">
+
+            <Spinner
+                android:id="@+id/problemsCarDropdown"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:backgroundTint="#000000"
+                android:gravity="center"
+                android:spinnerMode="dropdown" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/commonProblemText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/racing_sans_one"
+            android:gravity="center"
+            android:text="Common Problems"
+            android:textColor="#000000"
+            android:textSize="24sp" />
+
+        <RelativeLayout
+            android:layout_width="352dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="30dp"
+            android:background="#CDC5C5">
+
+            <Spinner
+                android:id="@+id/problemsDropdown"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:backgroundTint="#000000"
+                android:gravity="center"
+                android:spinnerMode="dropdown" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/engineCodeText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/racing_sans_one"
+            android:gravity="center"
+            android:text="Have an OBD-II Code?"
+            android:textColor="#000000"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/OBDIICode"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="30dp"
+            android:background="#CDC5C5"
+            android:hint="@string/OBDIICode"
+            android:paddingLeft="6dp"
+            android:textColorHint="#393939"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/generateSolutionsButton"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="75dp"
+            android:layout_marginRight="30dp"
+            android:backgroundTint="#237FEE"
+            android:fontFamily="@font/racing_sans_one"
+            android:text="Generate Solutions"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            app:cornerRadius="30dp" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="115dp"
+            android:background="?android:attr/windowBackground"
+            app:menu="@menu/bottom_nav_menu" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -77,7 +77,8 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="463dp">
+            android:layout_height="463dp"
+            android:background="#FFFFFF">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -110,9 +111,9 @@
             android:adjustViewBounds="true"
             android:background="#FFFFFF"
             android:clickable="true"
-            android:scaleType="fitCenter"
             android:maxWidth="50dp"
             android:maxHeight="50dp"
+            android:scaleType="fitCenter"
             app:srcCompat="@drawable/addbutton" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
