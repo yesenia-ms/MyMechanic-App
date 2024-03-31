@@ -42,13 +42,13 @@
             android:orientation="vertical"
             android:padding="24dp">
             <EditText
-                android:id="@+id/username"
+                android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/custom_text"
                 android:drawablePadding="8dp"
-                android:hint="Username"
+                android:hint="Email"
                 android:paddingStart="15dp"
                 android:textColor="@color/black"
                 android:textColorHighlight="@color/cardview_dark_background"/>
