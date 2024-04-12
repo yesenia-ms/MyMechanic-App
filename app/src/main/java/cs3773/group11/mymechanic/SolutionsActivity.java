@@ -73,6 +73,7 @@ public class SolutionsActivity extends AppCompatActivity {
                         SolutionItem solutionItem = new SolutionItem();
                         solutionItem.setSolutionTitle(documentSnapshot.getString("Possible Solution"));
                         solutionItem.setSolutionDescription(documentSnapshot.getString("Description"));
+                        solutionItem.setSolution(documentSnapshot.getString("Solution"));
                         solutionItemList.add(solutionItem);
                     }
                     MyAdapter adapter = new MyAdapter(solutionItemList);

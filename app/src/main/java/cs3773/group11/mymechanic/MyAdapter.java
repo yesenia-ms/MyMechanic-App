@@ -19,12 +19,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView titleTextView, descriptionTextView;
+        TextView titleTextView, descriptionTextView, solutionTextView;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             titleTextView = itemView.findViewById(R.id.text_view_title);
             descriptionTextView = itemView.findViewById(R.id.text_view_description);
+            solutionTextView = itemView.findViewById(R.id.text_view_solution);
         }
     }
 
@@ -40,6 +41,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         SolutionItem solutionItem = solutionItemList.get(position);
         holder.titleTextView.setText(solutionItem.getSolutionTitle());
         holder.descriptionTextView.setText(solutionItem.getSolutionDescription());
+        holder.solutionTextView.setText(solutionItem.getSolution());
     }
 
     @Override

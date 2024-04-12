@@ -6,20 +6,29 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:id="@+id/solutionsScreen"
-    tools:context=".SolutionsActivity"
-    android:background="@color/mechanicBlue">
+    tools:context=".SolutionsActivity">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        app:cardCornerRadius="0dp"
+        android:padding="0dp"
+        app:cardElevation="20dp"
+        app:cardBackgroundColor="@color/mechanicBlue">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:textSize="34dp"
+        android:textSize="25dp"
         android:textColor="@color/white"
         android:text="Problem Title"
         android:id="@+id/problem_title"
         android:padding="16dp">
 
     </TextView>
+    </androidx.cardview.widget.CardView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"

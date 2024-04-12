@@ -3,12 +3,13 @@ package cs3773.group11.mymechanic;
 public class SolutionItem {
 
     String solutionTitle;
-    String solutionDescription;
+    String solutionDescription, solution;
     int numLikes,numDislikes,numComments;
 
-    public SolutionItem(String solutionTitle, String solutionDescription) {
+    public SolutionItem(String solutionTitle, String solutionDescription, String solution) {
         this.solutionTitle = solutionTitle;
         this.solutionDescription = solutionDescription;
+        this.solution = solution;
         this.numLikes = 0;
         this.numDislikes = 0;
         this.numComments = 0;
@@ -16,12 +17,16 @@ public class SolutionItem {
 
     public SolutionItem() {
         this.solutionTitle = "blank";
+        this.solution = "blank";
         this.solutionDescription = "blank";
         this.numLikes = 0;
         this.numDislikes = 0;
         this.numComments = 0;
     }
 
+    public String getSolution() {
+        return solution;
+    }
     public String getSolutionTitle() {
         return solutionTitle;
     }
@@ -60,5 +65,9 @@ public class SolutionItem {
 
     public void setNumComments(int numComments) {
         this.numComments = numComments;
+    }
+
+    public void setSolution(String solution) {
+        this.solution = solution;
     }
 }
