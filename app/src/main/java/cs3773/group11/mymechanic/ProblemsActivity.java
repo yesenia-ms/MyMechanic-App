@@ -3,6 +3,7 @@ package cs3773.group11.mymechanic;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
@@ -17,6 +18,7 @@ import java.util.Objects;
 
 public class ProblemsActivity extends AppCompatActivity {
 
+    Button generateSolutionsButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +33,7 @@ public class ProblemsActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
+        generateSolutionsButton = findViewById(R.id.generateSolutionsButton);
 
         navView.setSelectedItemId(R.id.navigation_home);
         navView.setOnItemSelectedListener(item ->  {
@@ -43,6 +46,18 @@ public class ProblemsActivity extends AppCompatActivity {
                 return true;
             }
             return false;
+
+
+
+        });
+
+        generateSolutionsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), SolutionsActivity.class);
+                startActivity(intent);
+                finish();
+            }
         });
     }
 }
