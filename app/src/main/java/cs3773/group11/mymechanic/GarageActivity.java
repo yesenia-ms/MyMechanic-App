@@ -12,6 +12,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Objects;
 
@@ -29,6 +30,14 @@ public class GarageActivity extends AppCompatActivity {
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                /* temporary sign out button for troubleshooting
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(GarageActivity.this, LoginActivity.class);
+                startActivity(intent);
+                */
+
+
                 // Define the intent to start the new activity
                 Intent intent = new Intent(GarageActivity.this, AddCarActivity.class);
                 startActivity(intent);

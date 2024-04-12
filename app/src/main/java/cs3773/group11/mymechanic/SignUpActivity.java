@@ -1,6 +1,6 @@
 package cs3773.group11.mymechanic;
 
-import static cs3773.group11.mymechanic.R.*;
+import static cs3773.group11.mymechanic.R.id;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,9 +23,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-//import com.google.firebase.database.DatabaseReference;
-//import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class SignUpActivity extends AppCompatActivity {
@@ -106,6 +107,14 @@ public class SignUpActivity extends AppCompatActivity {
                     Toast.makeText(SignUpActivity.this, "Confirm Password", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                if(password.length() < 6){
+                    Toast.makeText(SignUpActivity.this, "Password must be at least 6 characters long.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(!password.equals(confirmPassword)){
+                    Toast.makeText(SignUpActivity.this, "Passwords do not match. Please try again.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 mAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener( new OnCompleteListener<AuthResult>() {
                             @Override
@@ -113,7 +122,19 @@ public class SignUpActivity extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     // Sign in success, update UI with the signed-in user's information
                                     //Log.d(TAG, "createUserWithEmail:success");
-                                    //FirebaseUser user = mAuth.getCurrentUser();
+                                    FirebaseUser user = mAuth.getCurrentUser();
+                                    assert user != null;
+                                    String userId = user.getUid();
+
+                                    Map<String, Object> newUser = new HashMap<>();
+                                    newUser.put("username", username);
+                                    newUser.put("email", email);
+                                    newUser.put("uID", userId);
+
+                                    FirebaseFirestore db = FirebaseFirestore.getInstance();
+                                    db.collection("users").document(userId).set(newUser);
+
+
                                     //updateUI(user);
                                     Toast.makeText(SignUpActivity.this, "Sign Up Successful!",
                                             Toast.LENGTH_SHORT).show();
@@ -122,7 +143,7 @@ public class SignUpActivity extends AppCompatActivity {
                                 } else {
                                     // If sign in fails, display a message to the user.
                                     //Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                                    Toast.makeText(SignUpActivity.this, "Authentication failed.",
+                                    Toast.makeText(SignUpActivity.this, "Sign up failed. Email may already be in use.",
                                             Toast.LENGTH_SHORT).show();
                                     //updateUI(null);
                                 }
