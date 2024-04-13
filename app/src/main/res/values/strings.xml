@@ -4,4 +4,9 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="OBDIICode"><i>Enter OBD-II Code</i></string>
+    <string name="title_activity_profile">ProfileActivity</string>
+    <string name="title_activity_edit_profile_activty">EditProfileActivity</string>
+    <string name="oil_change_descriptions">Oil changes take place usually every 3 months, or every 5,000 miles!\n\n If you don\'t know the last time you changed the oil in your car, if your car oil is very dark, basically black, then its time to change your oil!</string>
+    <string name="tire_pressure">The tire pressure for tires should be checked every month. \n\n During the colder months, the tire pressure drops one pound every 10 degree in pressure. Make sure to check it before any long trips or heavy loads!</string>
+    <string name="car_lights">Car lights including headlights, turn signals, and parking lights should be checked once a month.\n\n Turn your headlights when parked in front of a wall and check that both headlights are working, as well as turn signals and parking lights!</string>
 </resources>

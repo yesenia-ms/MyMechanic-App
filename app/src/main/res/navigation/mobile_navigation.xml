@@ -17,9 +17,9 @@
         android:label="@string/title_dashboard"
         tools:layout="@layout/activity_problems" />
 
-    <fragment
+    <activity
         android:id="@+id/navigation_notifications"
-        android:name="cs3773.group11.mymechanic.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:name="cs3773.group11.mymechanic.MaintenanceActivity"
+        android:label="Maintenance"
+        tools:layout="@layout/activity_maintenance" />
 </navigation>
