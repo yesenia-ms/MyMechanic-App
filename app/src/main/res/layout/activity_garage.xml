@@ -77,27 +77,16 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="463dp"
+            android:layout_height="441dp"
+            android:layout_marginTop="25dp"
             android:background="#FFFFFF">
 
             <LinearLayout
+                android:id="@+id/garageAddView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/car1"
-                    android:layout_width="371dp"
-                    android:layout_height="231dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginRight="20dp"
-                    android:clickable="true"
-                    android:fontFamily="@font/racing_sans_one"
-                    android:gravity="top|left"
-                    android:paddingTop="10dp"
-                    android:text="Car 1"
-                    android:textSize="20sp" />
             </LinearLayout>
         </ScrollView>
 
@@ -120,7 +109,7 @@
             android:id="@+id/nav_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="75dp"
+            android:layout_marginTop="65dp"
             android:background="?android:attr/windowBackground"
             app:menu="@menu/bottom_nav_menu" />
 

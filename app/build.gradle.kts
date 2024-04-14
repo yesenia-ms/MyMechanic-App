@@ -51,6 +51,7 @@ dependencies {
 
     implementation(platform("com.google.firebase:firebase-bom:32.7.3"))
     implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-firestore")
 
     // Maps SDK for Android
     implementation("com.google.android.gms:play-services-maps:18.2.0")

@@ -33,7 +33,6 @@ import java.util.Map;
 import java.util.Objects;
 
 public class SignUpActivity extends AppCompatActivity {
-
     TextView loginText;
     EditText signUpUsername, signUpEmail, signUpPassword, signUpConfirmPassword;
     Button signUpButton;
