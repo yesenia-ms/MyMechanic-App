@@ -16,9 +16,13 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.Objects;
 
+import cs3773.group11.mymechanic.ui.MapActivity;
+
 public class ProblemsActivity extends AppCompatActivity {
 
     Button generateSolutionsButton;
+    Button findNearbyMechanic;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +38,16 @@ public class ProblemsActivity extends AppCompatActivity {
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
         generateSolutionsButton = findViewById(R.id.generateSolutionsButton);
+
+        findNearbyMechanic = findViewById(R.id.find_mechanic_btn);
+        findNearbyMechanic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create an Intent to navigate to the MechanicActivity
+                Intent intent = new Intent(ProblemsActivity.this, MapActivity.class);
+                startActivity(intent); // Start the MechanicActivity
+            }
+        });
 
         navView.setSelectedItemId(R.id.navigation_home);
         navView.setOnItemSelectedListener(item ->  {

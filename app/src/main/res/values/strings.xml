@@ -4,6 +4,7 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="OBDIICode"><i>Enter OBD-II Code</i></string>
+    <string name="google_maps_api_key">AIzaSyCRCznc2p7yIqyUvujF2IjyrJhT9iD-p0o</string>
     <string name="title_activity_profile">ProfileActivity</string>
     <string name="title_activity_edit_profile_activty">EditProfileActivity</string>
     <string name="oil_change_descriptions">Oil changes take place usually every 3 months, or every 5,000 miles!\n\n If you don\'t know the last time you changed the oil in your car, if your car oil is very dark, basically black, then its time to change your oil!</string>

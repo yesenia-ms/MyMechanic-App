@@ -162,13 +162,23 @@
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="75dp"
+            android:layout_marginTop="50dp"
             android:layout_marginRight="30dp"
             android:backgroundTint="#237FEE"
             android:fontFamily="@font/racing_sans_one"
             android:text="Generate Solutions"
             android:textColor="@color/white"
             android:textSize="22sp"
+            app:cornerRadius="30dp" />
+
+        <Button
+            android:id="@+id/find_mechanic_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="70dp"
+            android:fontFamily="@font/racing_sans_one"
+            android:text="Find Nearby Mechanic"
             app:cornerRadius="30dp" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
