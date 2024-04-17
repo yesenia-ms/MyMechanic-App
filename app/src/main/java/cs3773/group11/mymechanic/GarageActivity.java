@@ -52,11 +52,11 @@ public class GarageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                /* temporary sign out button for troubleshooting
-                FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(GarageActivity.this, LoginActivity.class);
-                startActivity(intent);
-                */
+                //temporary sign out button for troubleshooting
+                //FirebaseAuth.getInstance().signOut();
+                //Intent intent = new Intent(GarageActivity.this, LoginActivity.class);
+                //startActivity(intent);
+
 
 
                 // Define the intent to start the new activity

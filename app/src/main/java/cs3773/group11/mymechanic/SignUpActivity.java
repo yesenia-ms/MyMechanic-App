@@ -5,7 +5,7 @@ import static cs3773.group11.mymechanic.R.id;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
+//import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,12 +20,12 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
+//import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
+//import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -39,7 +39,7 @@ public class SignUpActivity extends AppCompatActivity {
     //FirebaseDatabase database;
     //DatabaseReference reference;
     FirebaseAuth mAuth;
-    FirebaseFirestore fStore;
+    //FirebaseFirestore fStore;
     String userID;
 
     @Override
@@ -128,25 +128,22 @@ public class SignUpActivity extends AppCompatActivity {
                                     //Log.d(TAG, "createUserWithEmail:success");
                                     FirebaseUser user = mAuth.getCurrentUser();
                                     assert user != null;
-                                    String userId = user.getUid();
+                                    userID = user.getUid();
 
 //                                    Map<String, Object> newUser = new HashMap<>();
 //                                    newUser.put("username", username);
 //                                    newUser.put("email", email);
 //                                    newUser.put("uID", userId);
 //
-//                                    FirebaseFirestore db = FirebaseFirestore.getInstance();
-//                                    db.collection("users").document(userId).set(newUser);
 
 
-                                    //updateUI(user);
-                                    Toast.makeText(SignUpActivity.this, "Sign Up Successful!",
-                                            Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(SignUpActivity.this, LoginActivity.class );
+
+
+
                                     /* SAVING DATA IN CLOUD FIRESTORE CODE */
                                     userID = mAuth.getCurrentUser().getUid();
                                     // creating collection of users - if not created it automatically creates it
-                                    DocumentReference documentReference = fStore.collection("users").document(userID);
+                                    //DocumentReference documentReference = fStore.collection("users").document(userID);
                                     // use a hash map to save data
                                     Map<String, Object> user1 = new HashMap<>();
                                     user1.put("username", username);
@@ -158,14 +155,29 @@ public class SignUpActivity extends AppCompatActivity {
                                     user1.put("next_ol_change", "");
                                     user1.put("next_tp_check", "");
                                     user1.put("next_cl_check", "");
+
+
                                     // inserting into database
-                                    documentReference.set(user1).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    FirebaseFirestore db = FirebaseFirestore.getInstance();
+                                    db.collection("users").document(userID).set(user1);
+
+
+                                    /*documentReference.set(user1).addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void unused) {
                                             Log.d("TAG", "onSuccess: user Profile is created  for " + userID);
                                         }
-                                    });
+                                    });*/
+
+                                    //updateUI(user);
+
+                                    Toast.makeText(SignUpActivity.this, "Sign Up Successful!",
+                                            Toast.LENGTH_SHORT).show();
+
+                                    Intent intent = new Intent(SignUpActivity.this, LoginActivity.class );
                                     startActivity(intent);
+
+
                                 } else {
                                     // If sign in fails, display a message to the user.
                                     //Log.w(TAG, "createUserWithEmail:failure", task.getException());
