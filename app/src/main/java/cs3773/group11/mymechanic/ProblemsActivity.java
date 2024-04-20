@@ -22,6 +22,7 @@ public class ProblemsActivity extends AppCompatActivity {
 
     Button generateSolutionsButton;
     Button findNearbyMechanic;
+    ImageButton profileIcon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,17 @@ public class ProblemsActivity extends AppCompatActivity {
         generateSolutionsButton = findViewById(R.id.generateSolutionsButton);
 
         findNearbyMechanic = findViewById(R.id.find_mechanic_btn);
+
+        ImageButton profileIcon = findViewById(R.id.imageButton3);
+        // Set an OnClickListener to the profile icon to go to profile page
+        profileIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProblemsActivity.this, ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+        // Set an OnClickListener to the ImageButton
         findNearbyMechanic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

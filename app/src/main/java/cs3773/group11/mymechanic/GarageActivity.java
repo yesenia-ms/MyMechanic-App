@@ -45,8 +45,17 @@ public class GarageActivity extends AppCompatActivity {
         Log.d("TAG", "curr uID: " + userUID);
         populateGarageWithVehicles();
 
+        ImageButton profileIcon = findViewById(R.id.imageButton3);
         ImageButton imageButton = findViewById(R.id.addButton);
 
+        // Set an OnClickListener to the profile icon to go to profile page
+        profileIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(GarageActivity.this, ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
         // Set an OnClickListener to the ImageButton
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,7 +65,6 @@ public class GarageActivity extends AppCompatActivity {
                 //FirebaseAuth.getInstance().signOut();
                 //Intent intent = new Intent(GarageActivity.this, LoginActivity.class);
                 //startActivity(intent);
-
 
 
                 // Define the intent to start the new activity

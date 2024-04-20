@@ -22,6 +22,7 @@
         android:text="MyMechanic"
         android:textAlignment="center"
         android:textColor="@color/mechanicBlue"
+        android:fontFamily="@font/racing_sans_one"
         android:textSize="36sp"
         android:textStyle="bold" />
 
@@ -75,25 +76,39 @@
                 android:layout_marginTop="30dp"
                 android:backgroundTint="@color/white"
                 app:cornerRadius = "20dp"
+                android:fontFamily="@font/racing_sans_one"
                 android:textStyle="bold"/>
 
 
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
-    
+
     <TextView
-        android:id="@+id/signUpText"
+        android:id="@+id/forgotPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginBottom="20dp"
+        android:clickable="true"
         android:padding="8dp"
-        android:text="No Account? Sign Up"
-        style="bold"
+        android:text="Forgot Password?"
         android:textAlignment="center"
         android:textColor="@color/mechanicBlue"
-        android:textSize="14sp"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/signUpText"
+        style="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:clickable="true"/>
+        android:layout_marginBottom="20dp"
+        android:clickable="true"
+        android:padding="8dp"
+        android:text="No Account? Sign Up"
+        android:textAlignment="center"
+        android:textColor="@color/mechanicBlue"
+        android:textSize="14sp" />
 
 </LinearLayout>

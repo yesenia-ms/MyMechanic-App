@@ -28,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText loginPassword;
     Button loginButton;
     TextView signUpText;
+    TextView forgotPasswordText;
     FirebaseAuth mAuth;
 
     @Override
@@ -53,6 +54,7 @@ public class LoginActivity extends AppCompatActivity {
         loginPassword = findViewById(R.id.password);
         loginButton = findViewById(R.id.loginButton);
         signUpText = findViewById(R.id.signUpText);
+        forgotPasswordText = findViewById(R.id.forgotPassword);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,12 +95,6 @@ public class LoginActivity extends AppCompatActivity {
                                 }
                             }
                         });
-
-
-
-
-
-
             }
         });
 
@@ -106,6 +102,15 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        forgotPasswordText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ForgotPasswordActivity.class);
                 startActivity(intent);
                 finish();
             }

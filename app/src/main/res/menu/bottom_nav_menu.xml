@@ -4,18 +4,22 @@
     android:layout_height="wrap_content">
 
     <item
-        android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_garage_black_24dp"
+        android:id="@id/navigation_home"
+        android:icon="@drawable/car_foreground"
         android:title="@string/title_garage" />
 
     <item
         android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_dashboard" />
+        android:icon="@drawable/solutions_foreground"
+        android:title="Solutions" />
 
     <item
-        android:id="@+id/navigation_notifications"
-        android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/title_notifications" />
+        android:id="@+id/navigation_maintenance"
+        android:icon="@drawable/maintenance_foreground"
+        android:title="Maintenance" />
+<!--    <item-->
+<!--        android:id="@+id/navigation_map"-->
+<!--        android:icon="@drawable/local_mechanic_foreground"-->
+<!--        android:title="Local Mechanic" />-->
 
 </menu>
