@@ -28,10 +28,10 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="30dp"
+        android:layout_height="270dp"
+        android:layout_margin="15dp"
         app:cardCornerRadius="34dp"
-        app:cardElevation="20dp"
+        app:cardElevation="15dp"
         app:cardBackgroundColor="@color/mechanicBlue"
         android:background="@drawable/custom_text">
 
@@ -95,7 +95,7 @@
         android:text="Forgot Password?"
         android:textAlignment="center"
         android:textColor="@color/mechanicBlue"
-        android:textSize="12sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/signUpText"
@@ -109,6 +109,6 @@
         android:text="No Account? Sign Up"
         android:textAlignment="center"
         android:textColor="@color/mechanicBlue"
-        android:textSize="14sp" />
+        android:textSize="20sp" />
 
 </LinearLayout>
