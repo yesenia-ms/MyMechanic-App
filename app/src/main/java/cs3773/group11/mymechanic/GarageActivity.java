@@ -31,6 +31,7 @@ import java.util.Objects;
 
 public class GarageActivity extends AppCompatActivity{
     FirebaseFirestore db;
+    LinearLayout carContainer;
     FirebaseAuth mAuth;
     String userUID;
     @Override
@@ -43,10 +44,10 @@ public class GarageActivity extends AppCompatActivity{
         // Get the currently signed-in user's UID
         userUID = mAuth.getCurrentUser().getUid();
         Log.d("TAG", "curr uID: " + userUID);
-        populateGarageWithVehicles();
 
         ImageButton profileIcon = findViewById(R.id.imageButton3);
         ImageButton imageButton = findViewById(R.id.addButton);
+        carContainer = findViewById(R.id.garageAddView);
 
         // Set an OnClickListener to the profile icon to go to profile page
         profileIcon.setOnClickListener(new View.OnClickListener() {
@@ -99,6 +100,17 @@ public class GarageActivity extends AppCompatActivity{
             return false;
         });
     }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Clear button that was deleted on resume
+        clearButtons();
+        populateGarageWithVehicles();
+    }
+
+    private void clearButtons() {
+        carContainer.removeAllViews();
+    }
     private void populateGarageWithVehicles() {
         db.collection("registeredVehicles")
                 .whereEqualTo("uID", userUID)
@@ -106,7 +118,6 @@ public class GarageActivity extends AppCompatActivity{
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        LinearLayout carContainer = findViewById(R.id.garageAddView);
 
                         // Create buttons dynamically for each car
                         for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
@@ -117,6 +128,7 @@ public class GarageActivity extends AppCompatActivity{
                             String miles = document.getString("Miles");
                             String carName = year + " " + make + " " + model;
                             String totalMiles = "Total Miles: " + miles;
+                            String documentId = document.getId();
 
                             // Create a new Button
                             Button carButton = new Button(GarageActivity.this);
@@ -135,6 +147,17 @@ public class GarageActivity extends AppCompatActivity{
                             carButton.setClickable(true);
 
                             // Add click listener to the button (if needed)
+                            carButton.setOnClickListener(view -> {
+                                // Handle button click event
+                                // Open a new activity and pass data to it
+                                Intent intent = new Intent(GarageActivity.this, GarageEdit.class);
+                                intent.putExtra("documentId", documentId);
+                                intent.putExtra("carMake", make);
+                                intent.putExtra("carModel", model);
+                                intent.putExtra("carYear", year);
+                                intent.putExtra("carMiles", miles);
+                                startActivity(intent);
+                            });
 
                             // Add the Button to the LinearLayout
                             carContainer.addView(carButton);
