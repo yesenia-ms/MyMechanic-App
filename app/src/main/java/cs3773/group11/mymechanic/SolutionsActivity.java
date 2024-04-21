@@ -1,6 +1,9 @@
 package cs3773.group11.mymechanic;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -25,6 +28,7 @@ import java.util.Objects;
 public class SolutionsActivity extends AppCompatActivity {
 
     String problem;
+    Button backButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +39,18 @@ public class SolutionsActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        /*Go back to problems page*/
+
+        backButton = findViewById(R.id.back_button_solutions);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SolutionsActivity.this, ProblemsActivity.class);
+                startActivity(intent);
+            }
+        });
+
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
         getSupportActionBar().hide();
 
@@ -80,7 +96,5 @@ public class SolutionsActivity extends AppCompatActivity {
                     recyclerView.setAdapter(adapter);
 
                 });
-
-
     }
 }

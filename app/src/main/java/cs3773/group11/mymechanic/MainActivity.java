@@ -2,13 +2,11 @@ package cs3773.group11.mymechanic;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -19,7 +17,7 @@ import java.util.Objects;
 
 import cs3773.group11.mymechanic.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemReselectedListener {
+public class MainActivity extends AppCompatActivity {
 
     FirebaseAuth auth;
     FirebaseUser user;
@@ -54,10 +52,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 startActivity(new Intent(getApplicationContext(), ProblemsActivity.class));
                 finish();
                 return true;
-            } else if(itemId == R.id.navigation_maintenance) {
-                startActivity(new Intent(getApplicationContext(), MaintenanceActivity.class));
-                finish();
-                return true;
             }
             return false;
         });
@@ -72,8 +66,4 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
          */
     }
 
-    @Override
-    public void onNavigationItemReselected(@NonNull MenuItem menuItem) {
-
-    }
 }

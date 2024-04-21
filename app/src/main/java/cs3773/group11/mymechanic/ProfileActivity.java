@@ -22,6 +22,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -178,6 +179,22 @@ public class ProfileActivity extends AppCompatActivity{
                         }
                     }
                 });
+
+        BottomNavigationView navView = findViewById(R.id.nav_view);
+        navView.setSelectedItemId(R.id.navigation_home);
+        navView.setOnItemSelectedListener(item ->  {
+            int itemId = item.getItemId();
+            if (itemId == R.id.navigation_home) {
+                startActivity(new Intent(getApplicationContext(), GarageActivity.class));
+                finish();
+                return true;
+            } else if (itemId == R.id.navigation_dashboard) {
+                startActivity(new Intent(getApplicationContext(), ProblemsActivity.class));
+                finish();
+                return true;
+            }
+            return false;
+        });
     }
 
 }

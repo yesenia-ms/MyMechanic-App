@@ -8,10 +8,12 @@
 
 
     <LinearLayout
+        android:id="@+id/main_layout"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/nav_view">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar3"
@@ -74,356 +76,366 @@
             android:textSize="34sp"
             android:textStyle="bold"
             android:padding="10dp"  />
-
-<!-- OIL CHANGE CAR LAYOUT>-->
-        <RelativeLayout
+        <ScrollView
+            android:id="@+id/scroll_view"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:background="#237FEE" >
-
-            <TextView
-                android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Oil Change"
-                android:layout_marginLeft="10dp"
-                android:textSize="30sp"
-                android:fontFamily="@font/racing_sans_one"
-                android:textColor="#FFFFFF">
+                android:orientation="vertical">>
+                <!-- OIL CHANGE CAR LAYOUT>-->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="#237FEE" >
 
-            </TextView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Oil Change"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="30sp"
+                        android:fontFamily="@font/racing_sans_one"
+                        android:textColor="#FFFFFF">
 
-            <TextView
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:text="@string/oil_change_descriptions"
-                android:textSize="15sp"
-                android:fontFamily="@font/racing_sans_one"
-                android:textColor="#FFFFFF"
-                android:paddingTop="50dp"
-                android:paddingLeft="10dp"
-                android:layout_alignParentLeft="true"
-                >
+                    </TextView>
 
-            </TextView>
+                    <TextView
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/oil_change_descriptions"
+                        android:textSize="15sp"
+                        android:fontFamily="@font/racing_sans_one"
+                        android:textColor="#FFFFFF"
+                        android:paddingTop="50dp"
+                        android:paddingLeft="10dp"
+                        android:layout_alignParentLeft="true"
+                        >
 
-            <ImageView
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:src="@drawable/oil_change_closeup"
-                android:layout_marginRight="30dp"
-                android:layout_marginBottom="150dp"
-                android:layout_marginTop="10dp"
-                android:layout_alignParentRight="true">
+                    </TextView>
 
-            </ImageView>
+                    <ImageView
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:src="@drawable/oil_change_closeup"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginBottom="150dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_alignParentRight="true">
 
-            <TextView
-                android:id="@+id/last_oil_change_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#000000"
-                android:layout_marginLeft="215dp"
-                android:layout_marginBottom="55dp"
-                android:fontFamily="@font/racing_sans_one"
-                android:text="Last Oil Change: "
-                android:textSize="12sp"
-                android:layout_alignParentBottom="true">
+                    </ImageView>
 
-            </TextView>
+                    <TextView
+                        android:id="@+id/last_oil_change_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000000"
+                        android:layout_marginLeft="215dp"
+                        android:layout_marginBottom="55dp"
+                        android:fontFamily="@font/racing_sans_one"
+                        android:text="Last Oil Change: "
+                        android:textSize="12sp"
+                        android:layout_alignParentBottom="true">
 
-            <TextView
-                android:id="@+id/last_oil_change"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#000000"
-                android:layout_marginLeft="320dp"
-                android:layout_marginBottom="55dp"
-                android:fontFamily="@font/racing_sans_one"
-                android:text="DATE"
-                android:textSize="12sp"
-                android:layout_alignParentBottom="true">
+                    </TextView>
 
-            </TextView>
+                    <TextView
+                        android:id="@+id/last_oil_change"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000000"
+                        android:layout_marginLeft="320dp"
+                        android:layout_marginBottom="55dp"
+                        android:fontFamily="@font/racing_sans_one"
+                        android:text="DATE"
+                        android:textSize="12sp"
+                        android:layout_alignParentBottom="true">
 
-            <Button
-                android:id="@+id/enter_last_ol_date"
-                android:outlineAmbientShadowColor="@color/black"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginLeft="220dp"
-                android:layout_marginBottom="87dp"
-                android:background="#FFFFFF"
-                android:backgroundTint="#ffffff"
-                android:fontFamily="@font/racing_sans_one"
-                android:text="Enter Last Oil Change Date"
-                android:textColor="#000000"
-                android:textSize="12sp"></Button>
+                    </TextView>
 
-            <TextView
-                android:id="@+id/next_oil_change_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginLeft="215dp"
-                android:layout_marginBottom="15dp"
-                android:fontFamily="@font/racing_sans_one"
-                android:text="Next Oil Change:"
-                android:textColor="#000000"
-                android:textSize="12sp"></TextView>
+                    <Button
+                        android:id="@+id/enter_last_ol_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginLeft="220dp"
+                        android:layout_marginBottom="87dp"
+                        android:background="#FFFFFF"
+                        android:backgroundTint="#ffffff"
+                        android:fontFamily="@font/racing_sans_one"
+                        android:outlineAmbientShadowColor="@color/black"
+                        android:text="Enter Last Oil Change Date"
+                        android:textColor="#000000"
+                        android:textSize="12sp"></Button>
 
-            <TextView
-                android:id="@+id/next_oil_change"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#000000"
-                android:layout_marginLeft="320dp"
-                android:layout_marginBottom="15dp"
-                android:fontFamily="@font/racing_sans_one"
-                android:text="DATE"
-                android:textSize="12sp"
-                android:layout_alignParentBottom="true">
+                    <TextView
+                        android:id="@+id/next_oil_change_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginLeft="215dp"
+                        android:layout_marginBottom="15dp"
+                        android:fontFamily="@font/racing_sans_one"
+                        android:text="Next Oil Change:"
+                        android:textColor="#000000"
+                        android:textSize="12sp"></TextView>
 
-            </TextView>
+                    <TextView
+                        android:id="@+id/next_oil_change"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000000"
+                        android:layout_marginLeft="320dp"
+                        android:layout_marginBottom="15dp"
+                        android:fontFamily="@font/racing_sans_one"
+                        android:text="DATE"
+                        android:textSize="12sp"
+                        android:layout_alignParentBottom="true">
 
-        </RelativeLayout>
+                    </TextView>
 
-
-<!-- TIRE PRESSURE CAR LAYOUT>-->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:background="#237FEE">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tire Pressure (TP)"
-                android:layout_marginLeft="10dp"
-                android:textSize="30sp"
-                android:fontFamily="@font/racing_sans_one"
-                android:textColor="#FFFFFF">
-
-            </TextView>
-
-            <TextView
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:text="@string/tire_pressure"
-                android:textSize="15sp"
-                android:fontFamily="@font/racing_sans_one"
-                android:textColor="#FFFFFF"
-                android:paddingTop="50dp"
-                android:paddingLeft="10dp"
-                android:layout_alignParentLeft="true"
-                >
-
-            </TextView>
-
-            <ImageView
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:src="@drawable/tire_pressure"
-                android:layout_marginRight="35dp"
-                android:layout_marginBottom="130dp"
-                android:layout_marginTop="50dp"
-                android:layout_alignParentRight="true">
-
-            </ImageView>
-
-            <TextView
-                android:id="@+id/last_tp_check_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#000000"
-                android:layout_marginLeft="220dp"
-                android:layout_marginBottom="48dp"
-                android:fontFamily="@font/racing_sans_one"
-                android:text="Last TP Check: "
-                android:textSize="12sp"
-                android:layout_alignParentBottom="true">
-
-            </TextView>
-
-            <TextView
-                android:id="@+id/last_tp_check"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#000000"
-                android:layout_marginLeft="315dp"
-                android:layout_marginBottom="48dp"
-                android:fontFamily="@font/racing_sans_one"
-                android:text="DATE"
-                android:textSize="12sp"
-                android:layout_alignParentBottom="true">
-
-            </TextView>
-
-            <Button
-                android:id="@+id/enter_last_tp_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginLeft="220dp"
-                android:layout_marginBottom="65dp"
-                android:fontFamily="@font/racing_sans_one"
-                android:text="Enter Last TP Check Date"
-                android:textColor="#000000"
-                android:background="#ffffff"
-                android:textSize="12sp"></Button>
+                </RelativeLayout>
 
 
-            <TextView
-                android:id="@+id/next_tp_date_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginLeft="220dp"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/racing_sans_one"
-                android:text="Next TP Check:"
-                android:textColor="#000000"
-                android:textSize="12sp"></TextView>
+                <!-- TIRE PRESSURE CAR LAYOUT>-->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#237FEE">
 
-            <TextView
-                android:id="@+id/next_tp_check"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#000000"
-                android:layout_marginLeft="315dp"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/racing_sans_one"
-                android:text="DATE"
-                android:textSize="12sp"
-                android:layout_alignParentBottom="true">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tire Pressure (TP)"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="30sp"
+                        android:fontFamily="@font/racing_sans_one"
+                        android:textColor="#FFFFFF">
 
-            </TextView>
+                    </TextView>
 
-        </RelativeLayout>
+                    <TextView
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tire_pressure"
+                        android:textSize="15sp"
+                        android:fontFamily="@font/racing_sans_one"
+                        android:textColor="#FFFFFF"
+                        android:paddingTop="50dp"
+                        android:paddingLeft="10dp"
+                        android:layout_alignParentLeft="true"
+                        >
 
-<!-- HEADLIGHTS CAR LAYOUT>-->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="260dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:background="#237FEE">
+                    </TextView>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Car Lights (CL)"
-                android:layout_marginLeft="10dp"
-                android:textSize="30sp"
-                android:fontFamily="@font/racing_sans_one"
-                android:textColor="#FFFFFF">
+                    <ImageView
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:src="@drawable/tire_pressure"
+                        android:layout_marginRight="35dp"
+                        android:layout_marginBottom="130dp"
+                        android:layout_marginTop="50dp"
+                        android:layout_alignParentRight="true">
 
-            </TextView>
+                    </ImageView>
 
-            <TextView
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:text="@string/car_lights"
-                android:textSize="15sp"
-                android:fontFamily="@font/racing_sans_one"
-                android:textColor="#FFFFFF"
-                android:paddingTop="50dp"
-                android:paddingLeft="10dp"
-                android:layout_alignParentLeft="true"
-                >
+                    <TextView
+                        android:id="@+id/last_tp_check_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000000"
+                        android:layout_marginLeft="220dp"
+                        android:layout_marginBottom="48dp"
+                        android:fontFamily="@font/racing_sans_one"
+                        android:text="Last TP Check: "
+                        android:textSize="12sp"
+                        android:layout_alignParentBottom="true">
 
-            </TextView>
+                    </TextView>
 
-            <ImageView
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:src="@drawable/headlights"
-                android:layout_marginRight="30dp"
-                android:layout_marginBottom="150dp"
-                android:layout_marginTop="10dp"
-                android:layout_alignParentRight="true">
+                    <TextView
+                        android:id="@+id/last_tp_check"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000000"
+                        android:layout_marginLeft="315dp"
+                        android:layout_marginBottom="48dp"
+                        android:fontFamily="@font/racing_sans_one"
+                        android:text="DATE"
+                        android:textSize="12sp"
+                        android:layout_alignParentBottom="true">
 
-            </ImageView>
+                    </TextView>
 
-            <Button
-                android:id="@+id/enter_last_cl_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginLeft="220dp"
-                android:layout_marginBottom="85dp"
-                android:fontFamily="@font/racing_sans_one"
-                android:text="Enter Last CL Check Date"
-                android:textColor="#000000"
-                android:background="#ffffff"
-                android:textSize="12sp"></Button>
-
-            <TextView
-                android:id="@+id/last_cl_check_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#000000"
-                android:layout_marginLeft="220dp"
-                android:layout_marginBottom="48dp"
-                android:fontFamily="@font/racing_sans_one"
-                android:text="Last CL Check: "
-                android:textSize="12sp"
-                android:layout_alignParentBottom="true">
-
-            </TextView>
-
-            <TextView
-                android:id="@+id/last_cl_check"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#000000"
-                android:layout_marginLeft="315dp"
-                android:layout_marginBottom="48dp"
-                android:fontFamily="@font/racing_sans_one"
-                android:text="DATE"
-                android:textSize="12sp"
-                android:layout_alignParentBottom="true">
-
-            </TextView>
+                    <Button
+                        android:id="@+id/enter_last_tp_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginLeft="220dp"
+                        android:layout_marginBottom="65dp"
+                        android:fontFamily="@font/racing_sans_one"
+                        android:text="Enter Last TP Check Date"
+                        android:textColor="#000000"
+                        android:background="#ffffff"
+                        android:textSize="12sp"></Button>
 
 
+                    <TextView
+                        android:id="@+id/next_tp_date_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginLeft="220dp"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/racing_sans_one"
+                        android:text="Next TP Check:"
+                        android:textColor="#000000"
+                        android:textSize="12sp"></TextView>
 
-            <TextView
-                android:id="@+id/next_cl_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginLeft="220dp"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/racing_sans_one"
-                android:text="Next CL Check:"
-                android:textColor="#000000"
-                android:textSize="12sp"></TextView>
+                    <TextView
+                        android:id="@+id/next_tp_check"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000000"
+                        android:layout_marginLeft="315dp"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/racing_sans_one"
+                        android:text="DATE"
+                        android:textSize="12sp"
+                        android:layout_alignParentBottom="true">
 
-            <TextView
-                android:id="@+id/next_cl_check"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#000000"
-                android:layout_marginLeft="315dp"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/racing_sans_one"
-                android:text="DATE"
-                android:textSize="12sp"
-                android:layout_alignParentBottom="true">
+                    </TextView>
 
-            </TextView>
+                </RelativeLayout>
+
+                <!-- HEADLIGHTS CAR LAYOUT>-->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="260dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#237FEE">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Car Lights (CL)"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="30sp"
+                        android:fontFamily="@font/racing_sans_one"
+                        android:textColor="#FFFFFF">
+
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/car_lights"
+                        android:textSize="15sp"
+                        android:fontFamily="@font/racing_sans_one"
+                        android:textColor="#FFFFFF"
+                        android:paddingTop="50dp"
+                        android:paddingLeft="10dp"
+                        android:layout_alignParentLeft="true"
+                        >
+
+                    </TextView>
+
+                    <ImageView
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:src="@drawable/headlights"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginBottom="150dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_alignParentRight="true">
+
+                    </ImageView>
+
+                    <Button
+                        android:id="@+id/enter_last_cl_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginLeft="220dp"
+                        android:layout_marginBottom="85dp"
+                        android:fontFamily="@font/racing_sans_one"
+                        android:text="Enter Last CL Check Date"
+                        android:textColor="#000000"
+                        android:background="#ffffff"
+                        android:textSize="12sp"></Button>
+
+                    <TextView
+                        android:id="@+id/last_cl_check_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000000"
+                        android:layout_marginLeft="220dp"
+                        android:layout_marginBottom="48dp"
+                        android:fontFamily="@font/racing_sans_one"
+                        android:text="Last CL Check: "
+                        android:textSize="12sp"
+                        android:layout_alignParentBottom="true">
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/last_cl_check"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000000"
+                        android:layout_marginLeft="315dp"
+                        android:layout_marginBottom="48dp"
+                        android:fontFamily="@font/racing_sans_one"
+                        android:text="DATE"
+                        android:textSize="12sp"
+                        android:layout_alignParentBottom="true">
+
+                    </TextView>
 
 
 
-        </RelativeLayout>
+                    <TextView
+                        android:id="@+id/next_cl_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginLeft="220dp"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/racing_sans_one"
+                        android:text="Next CL Check:"
+                        android:textColor="#000000"
+                        android:textSize="12sp"></TextView>
 
+                    <TextView
+                        android:id="@+id/next_cl_check"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000000"
+                        android:layout_marginLeft="315dp"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/racing_sans_one"
+                        android:text="DATE"
+                        android:textSize="12sp"
+                        android:layout_alignParentBottom="true">
+
+                    </TextView>
+
+
+
+                </RelativeLayout>
+            </LinearLayout>
+
+        </ScrollView>
 
     </LinearLayout>
 
@@ -431,11 +443,11 @@
         android:id="@+id/nav_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="675dp"
         android:background="?android:attr/windowBackground"
+        app:layout_constraintTop_toBottomOf="@id/main_layout"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:menu="@menu/bottom_nav_menu" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

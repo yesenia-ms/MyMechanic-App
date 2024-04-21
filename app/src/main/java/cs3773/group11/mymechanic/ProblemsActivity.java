@@ -61,7 +61,14 @@ public class ProblemsActivity extends AppCompatActivity {
             }
         });
 
-        navView.setSelectedItemId(R.id.navigation_home);
+        //Profile Button
+        ImageButton profileBtn = findViewById(R.id.imageButton3);
+        profileBtn.setOnClickListener(v -> {
+            // Create an Intent to navigate to the ProfileActivity
+            Intent intent = new Intent(ProblemsActivity.this, ProfileActivity.class);
+            startActivity(intent); // Start the ProfileActivity
+        });
+
         navView.setOnItemSelectedListener(item ->  {
             int itemId = item.getItemId();
             if (itemId == R.id.navigation_home) {
@@ -71,6 +78,10 @@ public class ProblemsActivity extends AppCompatActivity {
             } else if (itemId == R.id.navigation_dashboard) {
                 return true;
             } else if(itemId == R.id.navigation_maintenance) {
+                startActivity(new Intent(getApplicationContext(), MaintenanceActivity.class));
+                finish();
+                return true;
+            } else if (itemId == R.id.navigation_notifications) {
                 startActivity(new Intent(getApplicationContext(), MaintenanceActivity.class));
                 finish();
                 return true;

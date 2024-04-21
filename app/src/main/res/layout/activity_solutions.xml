@@ -8,6 +8,7 @@
     android:id="@+id/solutionsScreen"
     tools:context=".SolutionsActivity">
 
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,6 +30,12 @@
 
     </TextView>
     </androidx.cardview.widget.CardView>
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Go Back"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/back_button_solutions"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"

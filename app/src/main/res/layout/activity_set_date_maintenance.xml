@@ -68,6 +68,13 @@
 
         </RelativeLayout>
 
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Go Back"
+            android:layout_marginLeft="15dp"
+            android:id="@+id/back_button"/>
+
         <TextView
             android:id="@+id/last_time_question"
             android:layout_width="match_parent"
@@ -81,6 +88,8 @@
             android:textStyle="bold">
 
         </TextView>
+
+
 
         <DatePicker
             android:id="@+id/date_picker"

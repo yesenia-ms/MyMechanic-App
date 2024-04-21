@@ -43,6 +43,7 @@ public class SetDateMaintenanceActivity extends AppCompatActivity {
     TextView lastTimeQuestion;
     DatePicker datePicker;
     Button saveButton;
+    Button backButton;
     int day, month, year;
     int nextDay, nextMonth, nextYear;
     int nextDayOil, nextMonthOil, nextYearOil;
@@ -66,6 +67,17 @@ public class SetDateMaintenanceActivity extends AppCompatActivity {
         datePicker.setMaxDate(now);
 
         saveButton = findViewById(id.save_button);
+        backButton = findViewById(R.id.back_button);
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+                                          @Override
+                                          public void onClick(View v) {
+                                              Intent intent = new Intent(SetDateMaintenanceActivity.this, MaintenanceActivity.class);
+                                              startActivity(intent);
+                                          }
+                                      });
+
+
 
 
         Intent data = getIntent();
