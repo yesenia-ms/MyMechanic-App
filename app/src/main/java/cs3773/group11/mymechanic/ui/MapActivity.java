@@ -23,6 +23,8 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -33,11 +35,12 @@ import cs3773.group11.mymechanic.R;
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback{
 
-    private GoogleMap map;
+    private GoogleMap map; // Declare the GoogleMap variable
+    private static final float DEFAULT_ZOOM = 13f; // Default zoom level for the map
 
-    private final int FINE_PERMISSION_CODE = 1;
-    Location currentLocation;
-    FusedLocationProviderClient fusedLocationProviderClient;
+    private final int FINE_PERMISSION_CODE = 1; //Permission code for fine location permission
+    Location currentLocation; //Current location of the user
+    FusedLocationProviderClient fusedLocationProviderClient; //Fused location provider client
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,12 +71,13 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     }
 
     private void getLastLocation() {
-
+        //Permissions check
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, FINE_PERMISSION_CODE);
             return;
         }
 
+        //Create a new task to build map if the location is not null
         Task<Location> task = fusedLocationProviderClient.getLastLocation();
         task.addOnSuccessListener(new OnSuccessListener<Location>() {
             @Override
@@ -88,17 +92,50 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         });
     }
 
+
+    //onMapReady used to create the map
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
         map = googleMap;
 
         map.getUiSettings().setZoomControlsEnabled(true);
 
+        //Add a marker and set camera to the users current location
         LatLng userLocation = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
-        map.addMarker(new MarkerOptions().position(userLocation).title("My Location"));
-        map.moveCamera(CameraUpdateFactory.newLatLng(userLocation));
+        map.addMarker(new MarkerOptions()
+                .position(userLocation)
+                .title("My Location")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, DEFAULT_ZOOM));
+
+        //Add markers
+        addMechanicMarkers();
     }
 
+
+    //Add map markers to mark nearby mechanics
+    private void addMechanicMarkers() {
+        LatLng mechanicLocation1 = new LatLng(37.415870502130495, -122.08713324503431);
+        LatLng mechanicLocation2 = new LatLng(37.42132327614966, -122.09989974534655);
+        LatLng mechanicLocation3 = new LatLng(37.42190392944933, -122.10360833297297);
+
+        map.addMarker(new MarkerOptions()
+                .position(mechanicLocation1)
+                .title("Kevin's Auto Repair")
+                .snippet("Rating: 4.9/5.0")
+                );
+        map.addMarker(new MarkerOptions()
+                .position(mechanicLocation2)
+                .title("Silicon Valley Performance Truck and Auto Repair")
+                .snippet("Rating: 5.0/5.0"));
+        map.addMarker(new MarkerOptions()
+                .position(mechanicLocation3)
+                .title("Advanced Motor Works")
+                .snippet("Rating: 4.7/5.0"));
+    }
+
+
+    //onRequestPermissionsResult used to check if the location permission is granted
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
