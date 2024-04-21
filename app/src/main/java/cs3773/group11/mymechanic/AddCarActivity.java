@@ -9,6 +9,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -47,6 +48,7 @@ public class AddCarActivity extends AppCompatActivity {
     AutoCompleteTextView miles;
     String selectedMake;
     String selectedModel;
+    ImageButton profileIcon;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -112,6 +114,15 @@ public class AddCarActivity extends AppCompatActivity {
 
         Button button1 = findViewById(R.id.cancelButton);
         Button button2 = findViewById(R.id.addConfirmButton);
+        profileIcon = findViewById(R.id.imageButton3);
+
+        profileIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AddCarActivity.this, ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
 
         // Set OnClickListener for the first button
         button1.setOnClickListener(new View.OnClickListener() {

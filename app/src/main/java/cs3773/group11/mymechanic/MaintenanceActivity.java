@@ -9,7 +9,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,7 +21,9 @@ import androidx.appcompat.app.AppCompatActivity;
 //import com.google.firebase.database.FirebaseDatabase;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -39,6 +43,7 @@ public class MaintenanceActivity extends AppCompatActivity{
     Button enterlastOilChange, enterlastTirePressure, enterlastCarLights;
     TextView lastOilChange, lastTirePressure, lastCarLights;
     TextView nextOilChange, nextTirePressure, nextCarLights;
+    //ProgressBar progressBar;
     boolean oilASAP, tpASAP, clASAP;
     FirebaseAuth mAuth;
     // Start firebase firestore instance to save the username data
@@ -67,6 +72,8 @@ public class MaintenanceActivity extends AppCompatActivity{
         /** FIRESTORE VARIABLES */
         mAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
+
+       // progressBar.setVisibility(View.GONE);
 
         profileIcon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,8 +112,27 @@ public class MaintenanceActivity extends AppCompatActivity{
             }
         });
 
+        BottomNavigationView navView = findViewById(R.id.nav_view);
+        navView.setSelectedItemId(R.id.navigation_home);
+        navView.setOnItemSelectedListener(item ->  {
+            int itemId = item.getItemId();
+            if (itemId == R.id.navigation_home) {
+                startActivity(new Intent(getApplicationContext(), GarageActivity.class));
+                finish();
+                return true;
+            } else if (itemId == R.id.navigation_dashboard) {
+                startActivity(new Intent(getApplicationContext(), ProblemsActivity.class));
+                finish();
+                return true;
+            } else if(itemId == R.id.navigation_maintenance) {
+                return true;
+            }
+            return false;
+        });
+
         /**
-         * READ DATA FROM FIRESTORE AND SEE THE LAST_OL_CHANGE
+         * READ DATA FROM FIRESTORE AND SEE THE
+         * LAST_OL_CHANGE
          * LAST_TP_CHECK
          * LAST_CL_CHECK
          */
@@ -119,6 +145,7 @@ public class MaintenanceActivity extends AppCompatActivity{
         final String current = user.getUid(); // getting unique user id
         DocumentReference documentReference = fStore.collection("users").document(current);
 
+       // progressBar.setVisibility(View.VISIBLE);
         db.collection("users")
                 .whereEqualTo("uID", current)
                 .get()
@@ -135,43 +162,14 @@ public class MaintenanceActivity extends AppCompatActivity{
                                 String nextOilChangeText = document.getString("next_ol_change");
                                 String nextTirePressureText = document.getString("next_tp_check");
                                 String nextCarLightsText = document.getString("next_cl_check");
-                                // split the next date string to see if the date is before todays date
-                                String[] validNextOil = nextOilChangeText.split("/");
-                                String[] validNextTP = nextTirePressureText.split("/");
-                                String[] validNextCL = nextCarLightsText.split("/");
-
-                                Log.d("VALIDATE NEXT OIL MONTH tag", validNextOil[0]);
-                                Log.d("VALIDATE NEXT OIL DAY tag", validNextOil[1]);
-                                Log.d("VALIDATE NEXT OIL YEAR tag", validNextOil[2]);
-                                DateFormat dateFormatMonth = new SimpleDateFormat("MM");
-                                DateFormat dateFormatDay = new SimpleDateFormat("DD");
-                                DateFormat dateFormatYear = new SimpleDateFormat("YYYY");
-                                Date date = new Date();
-                                Log.d("Month", (dateFormatMonth.format(date)));
-                                Log.d("Day", (dateFormatDay.format(date)));
-                                Log.d("Year", (dateFormatYear.format(date)));
-
-                                Date c = Calendar.getInstance().getTime();
-                                SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
-                                String formattedDate = df.format(c);
-                                Log.d("FORMATTED DATE", formattedDate);
-                                // split formatted date
-                                String[] currentDateFormat = formattedDate.split("-");
-                                Log.d("CURRENT MM DATE", currentDateFormat[0]);
-                                Log.d("CURRENT DD DATE", currentDateFormat[1]);
-                                Log.d("CURRENT YYYY DATE", currentDateFormat[2]);
-                                oilASAP = checkNextDateASAP(currentDateFormat, validNextOil);
-                                tpASAP = checkNextDateASAP(currentDateFormat, validNextTP);
-                                clASAP = checkNextDateASAP(currentDateFormat, validNextCL);
-                                //Log.d("oilASAP", oil)
-
+                                // before spliting the date check if a DATE even exists if it is null
                                 if(lastOilChangeText.equals("")){
                                     lastOilChange.setText("\tNO DATA ENTERED");
                                     nextOilChange.setText("\tNO DATA ENTERED");
                                 }
                                 else{ // otherwise set the text to date the user entered
                                     lastOilChange.setText(""+lastOilChangeText);
-                                    if(oilASAP){
+                                    if(checkDates(nextOilChangeText)){
                                         nextOilChange.setTextColor(255);
                                         nextOilChange.setText("ASAP!");
                                     }
@@ -187,7 +185,7 @@ public class MaintenanceActivity extends AppCompatActivity{
                                 }
                                 else{ // otherwise set the text to date the user entered
                                     lastTirePressure.setText(""+lastTirePressureText);
-                                    if(tpASAP){
+                                    if(checkDates(nextTirePressureText)){
                                         nextTirePressure.setTextColor(255);
                                         nextTirePressure.setText("ASAP!");
                                     }else{
@@ -203,45 +201,102 @@ public class MaintenanceActivity extends AppCompatActivity{
                                 }
                                 else{ // otherwise set the text to date the user entered
                                     lastCarLights.setText(""+lastCarLightsText);
-                                    if(clASAP){
+                                    if(checkDates(nextCarLightsText)){
                                         nextCarLights.setTextColor(255);
                                         nextCarLights.setText("ASAP!");
                                     }else{
                                         nextCarLights.setTextColor(000);
                                         nextCarLights.setText(""+nextCarLightsText);
                                     }
-
                                 }
                             }
                         }
                     }
-
-                    private boolean checkNextDateASAP(String[] currentDateFormat, String[] validNextChange) {
-                        int month = Integer.parseInt(validNextChange[0]);
-                        int day = Integer.parseInt(validNextChange[1]);
-                        int year = Integer.parseInt(validNextChange[2]);
-                        Log.d("NEXT ASAP?", String.valueOf(month));
-                        Log.d("NEXT ASAP?", String.valueOf(day));
-                        Log.d("NEXT ASAP?", String.valueOf(year));
-
-                        int currDay = Integer.parseInt(currentDateFormat[0]);
-                        int currMonth = Integer.parseInt(currentDateFormat[1]);
-                        int currYear = Integer.parseInt(currentDateFormat[2]);
-                        Log.d("CURR ASAP?", String.valueOf(currMonth));
-                        Log.d("CURR ASAP?", String.valueOf(currDay));
-                        Log.d("CURR ASAP?", String.valueOf(currYear));
-
-                        if(year < currYear){
-                            return true;
-                        }
-                        else if(month < currMonth && (year < currYear)){
-                            return true;
-                        }
-                        else if((day < currDay) && (month == currMonth)){
-                            return true;
-                        }
-                        return false;
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(MaintenanceActivity.this, "Error :- " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        //progressBar.setVisibility(View.INVISIBLE);
                     }
                 });
     }
+
+    private boolean checkNextDateASAP(String[] currentDateFormat, String[] validNextChange) {
+        // changing the variable type from String to integer to do calculations
+        int month = Integer.parseInt(validNextChange[0]);
+        int day = Integer.parseInt(validNextChange[1]);
+        int year = Integer.parseInt(validNextChange[2]);
+        // Log for debugging
+        Log.d("NEXT ASAP?", String.valueOf(month));
+        Log.d("NEXT ASAP?", String.valueOf(day));
+        Log.d("NEXT ASAP?", String.valueOf(year));
+
+        // changing the varianle type from String to integer to do calculations on current date
+        int currDay = Integer.parseInt(currentDateFormat[0]);
+        int currMonth = Integer.parseInt(currentDateFormat[1]);
+        int currYear = Integer.parseInt(currentDateFormat[2]);
+        // Log for debugging
+        Log.d("CURR ASAP?", String.valueOf(currMonth));
+        Log.d("CURR ASAP?", String.valueOf(currDay));
+        Log.d("CURR ASAP?", String.valueOf(currYear));
+
+        // if the next maintenance date is before this current year then ASAP
+        if(year < currYear){
+            return true;
+        }
+        // if the next maintenance month date is before this current month AND the maintenance year is < this year then ASAP
+        else if(month < currMonth && (year < currYear)){
+            return true;
+        }
+        // if the next maintenance day date is before this current day and the month is before this current month then ASAP
+        else if((day < currDay) && (month == currMonth)){
+            return true;
+        }
+        return false;
+    }
+    private boolean checkDates(String nextText/*, String nextOilChangeText, String nextTirePressureText, String nextCarLightsText*/){
+        boolean nextASAP;
+        String[] validNext = nextText.split("/");
+
+//        String[] validNextOil = nextOilChangeText.split("/");
+//        String[] validNextTP = nextTirePressureText.split("/");
+//        String[] validNextCL = nextCarLightsText.split("/");
+
+        Log.d("VALIDATE NEXT OIL MONTH tag", validNext[0]);
+        Log.d("VALIDATE NEXT OIL MONTH tag", validNext[1]);
+        Log.d("VALIDATE NEXT OIL MONTH tag", validNext[2]);
+
+//        Log.d("VALIDATE NEXT OIL MONTH tag", validNextOil[0]);
+//        Log.d("VALIDATE NEXT OIL DAY tag", validNextOil[1]);
+//        Log.d("VALIDATE NEXT OIL YEAR tag", validNextOil[2]);
+
+        // getting the current Month, Day, and Year
+        DateFormat dateFormatMonth = new SimpleDateFormat("MM");
+        DateFormat dateFormatDay = new SimpleDateFormat("DD");
+        DateFormat dateFormatYear = new SimpleDateFormat("YYYY");
+        Date date = new Date();
+        Log.d("Month", (dateFormatMonth.format(date)));
+        Log.d("Day", (dateFormatDay.format(date)));
+        Log.d("Year", (dateFormatYear.format(date)));
+        // formatting todays date to use it to calculate
+        Date c = Calendar.getInstance().getTime();
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+        String formattedDate = df.format(c);
+        Log.d("FORMATTED DATE", formattedDate);
+
+        // split formatted date
+        String[] currentDateFormat = formattedDate.split("-");
+        Log.d("CURRENT MM DATE", currentDateFormat[0]);
+        Log.d("CURRENT DD DATE", currentDateFormat[1]);
+        Log.d("CURRENT YYYY DATE", currentDateFormat[2]);
+
+        nextASAP = checkNextDateASAP(currentDateFormat, validNext);
+//
+//        oilASAP = checkNextDateASAP(currentDateFormat, validNextOil);
+//        tpASAP = checkNextDateASAP(currentDateFormat, validNextTP);
+//        clASAP = checkNextDateASAP(currentDateFormat, validNextCL);
+        //Log.d("oilASAP", oil)
+        return nextASAP;
+    }
+
 }

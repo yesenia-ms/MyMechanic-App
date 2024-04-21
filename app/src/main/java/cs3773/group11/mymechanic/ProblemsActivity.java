@@ -70,11 +70,12 @@ public class ProblemsActivity extends AppCompatActivity {
                 return true;
             } else if (itemId == R.id.navigation_dashboard) {
                 return true;
+            } else if(itemId == R.id.navigation_maintenance) {
+                startActivity(new Intent(getApplicationContext(), MaintenanceActivity.class));
+                finish();
+                return true;
             }
             return false;
-
-
-
         });
 
         generateSolutionsButton.setOnClickListener(new View.OnClickListener() {

@@ -29,7 +29,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.Objects;
 
-public class GarageActivity extends AppCompatActivity {
+public class GarageActivity extends AppCompatActivity{
     FirebaseFirestore db;
     FirebaseAuth mAuth;
     String userUID;
@@ -89,6 +89,10 @@ public class GarageActivity extends AppCompatActivity {
                 return true;
             } else if (itemId == R.id.navigation_dashboard) {
                 startActivity(new Intent(getApplicationContext(), ProblemsActivity.class));
+                finish();
+                return true;
+            } else if(itemId == R.id.navigation_maintenance){
+                startActivity(new Intent(getApplicationContext(), MaintenanceActivity.class));
                 finish();
                 return true;
             }
