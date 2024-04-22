@@ -180,21 +180,21 @@ public class ProfileActivity extends AppCompatActivity{
                     }
                 });
 
-        BottomNavigationView navView = findViewById(R.id.nav_view);
-        navView.setSelectedItemId(R.id.navigation_home);
-        navView.setOnItemSelectedListener(item ->  {
-            int itemId = item.getItemId();
-            if (itemId == R.id.navigation_home) {
-                startActivity(new Intent(getApplicationContext(), GarageActivity.class));
-                finish();
-                return true;
-            } else if (itemId == R.id.navigation_dashboard) {
-                startActivity(new Intent(getApplicationContext(), ProblemsActivity.class));
-                finish();
-                return true;
-            }
-            return false;
-        });
+        // BottomNavigationView navView = findViewById(R.id.nav_view);
+        // navView.setSelectedItemId(R.id.navigation_home);
+        // navView.setOnItemSelectedListener(item ->  {
+        //     int itemId = item.getItemId();
+        //     if (itemId == R.id.navigation_home) {
+        //         startActivity(new Intent(getApplicationContext(), GarageActivity.class));
+        //         finish();
+        //         return true;
+        //     } else if (itemId == R.id.navigation_dashboard) {
+        //         startActivity(new Intent(getApplicationContext(), ProblemsActivity.class));
+        //         finish();
+        //         return true;
+        //     }
+        //     return false;
+        // });
     }
 
 }
