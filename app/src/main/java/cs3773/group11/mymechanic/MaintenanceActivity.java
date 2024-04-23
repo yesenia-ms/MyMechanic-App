@@ -170,11 +170,9 @@ public class MaintenanceActivity extends AppCompatActivity{
                                 else{ // otherwise set the text to date the user entered
                                     lastOilChange.setText(""+lastOilChangeText);
                                     if(checkDates(nextOilChangeText)){
-                                        nextOilChange.setTextColor(255);
                                         nextOilChange.setText("ASAP!");
                                     }
                                     else {
-                                        nextOilChange.setTextColor(000);
                                         nextOilChange.setText("" + nextOilChangeText);
                                     }
                                 }
@@ -186,26 +184,21 @@ public class MaintenanceActivity extends AppCompatActivity{
                                 else{ // otherwise set the text to date the user entered
                                     lastTirePressure.setText(""+lastTirePressureText);
                                     if(checkDates(nextTirePressureText)){
-                                        nextTirePressure.setTextColor(255);
                                         nextTirePressure.setText("ASAP!");
                                     }else{
-                                        nextTirePressure.setTextColor(000);
                                         nextTirePressure.setText(""+nextTirePressureText);
                                     }
                                 }
                                 // check if the document entry "last_cl_check" is equal to null
                                 if(lastCarLightsText.equals("")){
-                                    nextCarLights.setTextColor(000);
                                     lastCarLights.setText("\tNO DATA ENTERED");
                                     nextCarLights.setText("\tNO DATA ENTERED");
                                 }
                                 else{ // otherwise set the text to date the user entered
                                     lastCarLights.setText(""+lastCarLightsText);
                                     if(checkDates(nextCarLightsText)){
-                                        nextCarLights.setTextColor(255);
                                         nextCarLights.setText("ASAP!");
                                     }else{
-                                        nextCarLights.setTextColor(000);
                                         nextCarLights.setText(""+nextCarLightsText);
                                     }
                                 }
