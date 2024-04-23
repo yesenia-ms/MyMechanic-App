@@ -72,7 +72,7 @@
                 android:backgroundTint="@color/white"/>
 
             <ImageButton
-                android:id="@+id/imageButton5"
+                android:id="@+id/comment_button"
                 android:layout_width="1dp"
                 android:layout_height="30dp"
                 android:layout_weight="1"

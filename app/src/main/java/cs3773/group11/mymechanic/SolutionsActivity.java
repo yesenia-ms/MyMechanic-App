@@ -90,9 +90,13 @@ public class SolutionsActivity extends AppCompatActivity {
                         solutionItem.setSolutionTitle(documentSnapshot.getString("Possible Solution"));
                         solutionItem.setSolutionDescription(documentSnapshot.getString("Description"));
                         solutionItem.setSolution(documentSnapshot.getString("Solution"));
+
+                        String documentId = documentSnapshot.getId();
+                        solutionItem.setSolutionID(documentId);
+
                         solutionItemList.add(solutionItem);
                     }
-                    MyAdapter adapter = new MyAdapter(solutionItemList);
+                    MyAdapter adapter = new MyAdapter(this, solutionItemList);
                     recyclerView.setAdapter(adapter);
 
                 });

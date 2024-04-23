@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CommentActivity">
+
+    <Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/comment_toolbar"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/comment_recycler"
+        android:layout_below="@+id/comment_toolbar"
+        android:layout_above="@+id/comment_bottom"/>
+
+    <RelativeLayout
+        android:id="@+id/comment_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:layout_alignParentBottom="true"
+        android:padding="5dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Add a comment..."
+            android:id="@+id/add_comment"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@android:color/transparent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/post"
+            android:text="POST"
+            android:layout_marginEnd="5dp"
+            android:layout_alignParentEnd="true"
+            android:textColor="@color/black"/>
+
+
+
+
+
+
+
+    </RelativeLayout>
+
+
+
+
+</RelativeLayout>

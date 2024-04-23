@@ -2,14 +2,15 @@ package cs3773.group11.mymechanic;
 
 public class SolutionItem {
 
-    String solutionTitle;
+    String solutionTitle, solutionID;
     String solutionDescription, solution;
     int numLikes,numDislikes,numComments;
 
-    public SolutionItem(String solutionTitle, String solutionDescription, String solution) {
+    public SolutionItem(String solutionTitle, String solutionDescription, String solution, String solutionID) {
         this.solutionTitle = solutionTitle;
         this.solutionDescription = solutionDescription;
         this.solution = solution;
+        this.solutionID= solutionID;
         this.numLikes = 0;
         this.numDislikes = 0;
         this.numComments = 0;
@@ -19,9 +20,19 @@ public class SolutionItem {
         this.solutionTitle = "blank";
         this.solution = "blank";
         this.solutionDescription = "blank";
+        this.solutionID = "blank";
         this.numLikes = 0;
         this.numDislikes = 0;
         this.numComments = 0;
+    }
+
+
+    public String getSolutionID() {
+        return solutionID;
+    }
+
+    public void setSolutionID(String solutionID) {
+        this.solutionID = solutionID;
     }
 
     public String getSolution() {
