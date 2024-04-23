@@ -155,6 +155,7 @@ public class SignUpActivity extends AppCompatActivity {
                                     user1.put("next_ol_change", "");
                                     user1.put("next_tp_check", "");
                                     user1.put("next_cl_check", "");
+                                    user1.put("role", "user");
 
 
                                     // inserting into database

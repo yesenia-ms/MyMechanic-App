@@ -51,7 +51,7 @@ public class ProfileActivity extends AppCompatActivity{
     String userID;
 
 
-    Button resetPassword, logoutButton, editProfileButton;
+    Button resetPassword, logoutButton, editProfileButton, editRoleButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -65,6 +65,7 @@ public class ProfileActivity extends AppCompatActivity{
         userPassword = findViewById(R.id.user_password);
         logoutButton = findViewById(R.id.logout_button);
         editProfileButton = findViewById(R.id.edit_profile_button);
+        editRoleButton = findViewById(id.mechanic_role_button);
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
@@ -91,6 +92,38 @@ public class ProfileActivity extends AppCompatActivity{
 //            }
 //        });
         /** END DISPLAY CODE */
+
+        /** EDIT ROLE CODE */
+        editRoleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+                final String currentUserId = user.getUid();
+
+                db.collection("users")
+                        .whereEqualTo("uID", currentUserId)
+                        .get()
+                        .addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) {
+                                QuerySnapshot querySnapshot = task.getResult();
+
+                                DocumentSnapshot document = querySnapshot.getDocuments().get(0);
+                                DocumentReference userRef = document.getReference();
+                                userRef.update("role", "mechanic");
+
+                                Toast.makeText(ProfileActivity.this, "Request Successful. Check email for verification process.",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        });
+            }
+        });
+        /** END EDIT ROLE CODE */
+
+
+
 
         /** EDIT PROFILE CODE */
         editProfileButton.setOnClickListener(new View.OnClickListener() {

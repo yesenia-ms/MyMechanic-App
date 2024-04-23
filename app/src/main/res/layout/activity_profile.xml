@@ -134,11 +134,19 @@
             android:text="Edit Profile" />
 
         <Button
+            android:id="@+id/mechanic_role_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="Request Mechanic Account" />
+
+        <Button
             android:id="@+id/reset_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:background="#FF871D"
             android:text="Reset Password" />
 
