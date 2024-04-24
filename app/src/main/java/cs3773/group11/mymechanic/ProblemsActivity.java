@@ -22,7 +22,6 @@ public class ProblemsActivity extends AppCompatActivity {
 
     Button generateSolutionsButton;
     Button findNearbyMechanic;
-    ImageButton profileIcon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,21 +67,19 @@ public class ProblemsActivity extends AppCompatActivity {
             Intent intent = new Intent(ProblemsActivity.this, ProfileActivity.class);
             startActivity(intent); // Start the ProfileActivity
         });
-
+        navView.setSelectedItemId(R.id.navigation_problems);
         navView.setOnItemSelectedListener(item ->  {
             int itemId = item.getItemId();
             if (itemId == R.id.navigation_home) {
                 startActivity(new Intent(getApplicationContext(), GarageActivity.class));
                 finish();
                 return true;
-            } else if (itemId == R.id.navigation_dashboard) {
-                return true;
             } else if(itemId == R.id.navigation_maintenance) {
                 startActivity(new Intent(getApplicationContext(), MaintenanceActivity.class));
                 finish();
                 return true;
-            } else if (itemId == R.id.navigation_notifications) {
-                startActivity(new Intent(getApplicationContext(), MaintenanceActivity.class));
+            } else if (itemId == R.id.navigation_problems) {
+                startActivity(new Intent(getApplicationContext(), ProblemsActivity.class));
                 finish();
                 return true;
             }

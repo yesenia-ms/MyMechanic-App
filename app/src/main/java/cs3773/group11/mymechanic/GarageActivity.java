@@ -88,7 +88,7 @@ public class GarageActivity extends AppCompatActivity{
             int itemId = item.getItemId();
             if (itemId == R.id.navigation_home) {
                 return true;
-            } else if (itemId == R.id.navigation_dashboard) {
+            } else if (itemId == R.id.navigation_problems) {
                 startActivity(new Intent(getApplicationContext(), ProblemsActivity.class));
                 finish();
                 return true;
