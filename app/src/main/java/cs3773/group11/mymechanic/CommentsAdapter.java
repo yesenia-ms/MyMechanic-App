@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,8 +17,9 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.MyView
     private List<CommentItem> commentItemList;
     Context context;
 
-    public CommentsAdapter(List<CommentItem> commentItemList) {
+    public CommentsAdapter(Context context, List<CommentItem> commentItemList) {
         this.commentItemList = commentItemList;
+        this.context = context;
     }
 
 
@@ -29,9 +29,9 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.MyView
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            nameTextView = itemView.findViewById(R.id.name);
-            roleTextView = itemView.findViewById(R.id.role);
-            commentTextView = itemView.findViewById(R.id.commentText);
+            nameTextView = itemView.findViewById(R.id.comment_name);
+            roleTextView = itemView.findViewById(R.id.comment_role);
+            commentTextView = itemView.findViewById(R.id.comment_text);
 
         }
     }

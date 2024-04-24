@@ -5,47 +5,68 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CommentActivity">
+    tools:context=".CommentActivity"
+    android:orientation="vertical">
 
-    <Toolbar
+
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/comment_toolbar"
-        />
+        android:layout_margin="0dp"
+        app:cardCornerRadius="0dp"
+        android:padding="0dp"
+        android:id="@+id/spacer_card"
+        app:cardElevation="20dp"
+        app:cardBackgroundColor="@color/mechanicBlue">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="@color/white"
+            android:text="Comments"
+            android:id="@+id/comments_title_card"
+            android:padding="16dp">
+
+        </TextView>
+    </androidx.cardview.widget.CardView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/comment_recycler"
-        android:layout_below="@+id/comment_toolbar"
+        android:layout_below="@+id/spacer_card"
         android:layout_above="@+id/comment_bottom"/>
+<RelativeLayout
+    android:id="@+id/comment_bottom"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:padding="5dp"
+    android:orientation="horizontal"
+    android:layout_alignParentBottom="true">
 
-    <RelativeLayout
-        android:id="@+id/comment_bottom"
-        android:layout_width="match_parent"
+
+    <EditText
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#ffffff"
-        android:layout_alignParentBottom="true"
-        android:padding="5dp">
+        android:hint="Add a comment..."
+        android:id="@+id/add_comment"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:textSize="20dp"
+        android:background="@android:color/transparent"
+        android:layout_centerVertical="true"/>
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Add a comment..."
-            android:id="@+id/add_comment"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:background="@android:color/transparent"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/post"
-            android:text="POST"
-            android:layout_marginEnd="5dp"
-            android:layout_alignParentEnd="true"
-            android:textColor="@color/black"/>
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/post"
+    android:text="POST"
+    android:textSize="20dp"
+    android:layout_marginEnd="5dp"
+    android:textColor="@color/black"
+    android:layout_alignParentEnd="true"/>
 
 
 
@@ -53,7 +74,8 @@
 
 
 
-    </RelativeLayout>
+
+</RelativeLayout>
 
 
 

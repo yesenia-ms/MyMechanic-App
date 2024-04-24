@@ -12,6 +12,12 @@ public class CommentItem {
         this.comment = comment;
     }
 
+    public CommentItem() {
+        this.name = "name";
+        this.role = "role";
+        this.comment = "comment";
+    }
+
     public String getName() {
         return name;
     }

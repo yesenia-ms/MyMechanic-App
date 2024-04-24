@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/name"
+        android:id="@+id/comment_name"
         android:textColor="@color/black"
         android:textSize="20dp"
         android:paddingLeft="20dp"
@@ -17,30 +17,30 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/role"
+        android:id="@+id/comment_role"
         android:textColor="@color/mechanicBlue"
         android:textSize="20dp"
         android:paddingLeft="5dp"
         android:paddingTop="10dp"
         android:text="Role"
-        android:layout_toRightOf="@+id/name"/>
+        android:layout_toRightOf="@+id/comment_name"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/commentText"
+        android:id="@+id/comment_text"
         android:textColor="@color/black"
         android:text="Comment"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
-        android:layout_below="@+id/name"/>
+        android:layout_below="@+id/comment_name"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="#DAD8D8"
         android:layout_marginTop="10dp"
-        android:layout_below="@+id/commentText"/>
+        android:layout_below="@+id/comment_text"/>
 
 
 
