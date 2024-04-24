@@ -9,7 +9,7 @@
         android:title="@string/title_garage" />
 
     <item
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_problems"
         android:icon="@drawable/solutions_foreground"
         android:title="Solutions" />
 

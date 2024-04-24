@@ -1,6 +1,6 @@
 package cs3773.group11.mymechanic;
 
-import static cs3773.group11.mymechanic.R.*;
+import static cs3773.group11.mymechanic.R.id;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -9,16 +9,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
-//import com.google.firebase.database.DatabaseReference;
-//import com.google.firebase.database.FirebaseDatabase;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -75,13 +71,10 @@ public class MaintenanceActivity extends AppCompatActivity{
 
        // progressBar.setVisibility(View.GONE);
 
-        profileIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Define the intent to start the new activity
-                Intent intent = new Intent(MaintenanceActivity.this, ProfileActivity.class);
-                startActivity(intent);
-            }
+        profileIcon.setOnClickListener(v -> {
+            // Define the intent to start the new activity
+            Intent intent = new Intent(MaintenanceActivity.this, ProfileActivity.class);
+            startActivity(intent);
         });
 
         enterlastOilChange.setOnClickListener(new View.OnClickListener() {
@@ -113,14 +106,14 @@ public class MaintenanceActivity extends AppCompatActivity{
         });
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
-        navView.setSelectedItemId(R.id.navigation_home);
+        navView.setSelectedItemId(id.navigation_maintenance);
         navView.setOnItemSelectedListener(item ->  {
             int itemId = item.getItemId();
             if (itemId == R.id.navigation_home) {
                 startActivity(new Intent(getApplicationContext(), GarageActivity.class));
                 finish();
                 return true;
-            } else if (itemId == R.id.navigation_dashboard) {
+            } else if (itemId == id.navigation_problems) {
                 startActivity(new Intent(getApplicationContext(), ProblemsActivity.class));
                 finish();
                 return true;
