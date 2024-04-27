@@ -2,6 +2,7 @@ package cs3773.group11.mymechanic;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -40,6 +41,14 @@ public class SolutionsActivity extends AppCompatActivity {
             return insets;
         });
 
+        // Getitng the data passed from the Intent
+        Intent data = getIntent();
+        String problemNumber = data.getStringExtra("Problem Number");
+        String problemName = data.getStringExtra("Problem Name");
+
+        Log.d("PASSED PROB NAME:", problemName);
+        Log.d("PASSED PROB #:", (problemNumber));
+
         /*Go back to problems page*/
 
         backButton = findViewById(R.id.back_button_solutions);
@@ -63,7 +72,7 @@ public class SolutionsActivity extends AppCompatActivity {
         CollectionReference solutionsRef = db.collection("car-solutions");
         CollectionReference problemRef = db.collection("car-problems");
 
-        Query problemQuery = problemRef.whereEqualTo("Problem Number", 8).limit(1);
+        Query problemQuery = problemRef.whereEqualTo("Problem Number", problemNumber).limit(1);
 
         problemQuery.get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
@@ -78,10 +87,8 @@ public class SolutionsActivity extends AppCompatActivity {
         List<SolutionItem> solutionItemList = new ArrayList<>();
 
 
-
-
         //**********************the value below needs to be passed through intent.putExtra from problems page*************************
-        solutionsRef.whereEqualTo("Problem Number", 8)
+        solutionsRef.whereEqualTo("Problem Number", (problemNumber))
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
                     for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {

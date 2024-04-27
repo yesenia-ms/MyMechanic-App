@@ -97,7 +97,7 @@
             android:background="#CDC5C5">
 
             <Spinner
-                android:id="@+id/problemsCarDropdown"
+                android:id="@+id/carDropdown"
                 android:layout_width="match_parent"
                 android:layout_height="32dp"
                 android:backgroundTint="#000000"
