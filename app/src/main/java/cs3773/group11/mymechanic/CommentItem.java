@@ -1,5 +1,7 @@
 package cs3773.group11.mymechanic;
 
+
+//object of single item
 public class CommentItem {
 
     String name;

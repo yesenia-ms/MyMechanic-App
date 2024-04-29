@@ -41,7 +41,7 @@ public class SolutionsActivity extends AppCompatActivity {
             return insets;
         });
 
-        // Getitng the data passed from the Intent
+        // Getting the data passed from the Intent
         Intent data = getIntent();
         String problemNumber = data.getStringExtra("Problem Number");
         String problemName = data.getStringExtra("Problem Name");
@@ -86,7 +86,7 @@ public class SolutionsActivity extends AppCompatActivity {
 
         List<SolutionItem> solutionItemList = new ArrayList<>();
 
-
+    //loads in solutions for the previously selected problem.
         //**********************the value below needs to be passed through intent.putExtra from problems page*************************
         solutionsRef.whereEqualTo("Problem Number", (problemNumber))
                 .get()

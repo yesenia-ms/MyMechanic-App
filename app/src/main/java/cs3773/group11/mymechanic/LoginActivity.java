@@ -56,6 +56,8 @@ public class LoginActivity extends AppCompatActivity {
         signUpText = findViewById(R.id.signUpText);
         forgotPasswordText = findViewById(R.id.forgotPassword);
 
+
+        //logs in the user by checking firebase
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,6 +100,8 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+
+        //changes to sign up screen
         signUpText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

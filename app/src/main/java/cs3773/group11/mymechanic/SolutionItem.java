@@ -1,5 +1,7 @@
 package cs3773.group11.mymechanic;
 
+
+//creates an object for a solution
 public class SolutionItem {
 
     String solutionTitle, solutionID;

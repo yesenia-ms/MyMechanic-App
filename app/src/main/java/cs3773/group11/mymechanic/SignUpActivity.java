@@ -75,6 +75,7 @@ public class SignUpActivity extends AppCompatActivity {
             return insets;
         });
 
+        //changes screen to login screen
         loginText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,6 +84,8 @@ public class SignUpActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        //checks for errors in account creation steps. if no errors, creates account in firebase.
         signUpButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {

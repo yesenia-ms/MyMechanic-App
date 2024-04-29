@@ -83,8 +83,11 @@ public class CommentActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentReference solutionsRef = db.collection("car-solutions").document(solutionID);
 
+
+        //pulls specific problem solution from firebase.
+        DocumentReference solutionsRef = db.collection("car-solutions").document(solutionID);
+        //pulls the comments subcollection from the solution in the previous line.
         CollectionReference commentsRef = solutionsRef.collection("comments");
 
 
@@ -93,7 +96,7 @@ public class CommentActivity extends AppCompatActivity {
 
         fUser = FirebaseAuth.getInstance().getCurrentUser();
 
-
+    // loads comments into list. Loads list into recyclerview.
         commentsRef.get().addOnSuccessListener(queryDocumentSnapshots -> {
                     List<CommentItem> commentItemList = new ArrayList<>();
                     for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
@@ -160,6 +163,7 @@ public class CommentActivity extends AppCompatActivity {
         });
     }
 
+    //stores comments into database
     private void putComment() {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
